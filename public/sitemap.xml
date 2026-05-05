@@ -7,25 +7,31 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://glasfein-nienburg.de/kontakt.html</loc>
+    <loc>https://glasfein-nienburg.de/kontakt</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://glasfein-nienburg.de/karriere.html</loc>
+    <loc>https://glasfein-nienburg.de/karriere</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://glasfein-nienburg.de/impressum.html</loc>
+    <loc>https://glasfein-nienburg.de/karriere/glasreiniger</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://glasfein-nienburg.de/impressum</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://glasfein-nienburg.de/datenschutz.html</loc>
+    <loc>https://glasfein-nienburg.de/datenschutz</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

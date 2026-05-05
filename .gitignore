@@ -1,3 +1,8 @@
 Thumbs.db
 .DS_Store
 desktop.ini
+node_modules/
+dist/
+.vite/
+.chrome-mobile-debug*/
+.tmp-mobile-*.png
