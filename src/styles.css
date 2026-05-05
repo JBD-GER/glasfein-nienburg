@@ -69,6 +69,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -82,6 +84,7 @@ body {
     radial-gradient(circle at 85% 76%, rgba(10, 126, 180, 0.18), transparent 24%),
     linear-gradient(180deg, #f7fbfc 0%, #eef5f7 40%, #f8fbfc 100%);
   overflow-x: hidden;
+  overflow-x: clip;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -185,6 +188,9 @@ button {
 
 .site-shell {
   position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .section-shell {
@@ -231,6 +237,8 @@ button {
 .site-header {
   position: relative;
   isolation: isolate;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .site-header::before,
@@ -570,6 +578,8 @@ h3 {
 .hero-visual,
 .subpage-media {
   position: relative;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .hero-collage {
@@ -1054,6 +1064,128 @@ section {
 .showcase-card figcaption strong {
   font-size: 1.7rem;
   letter-spacing: 0;
+}
+
+.showcase-section {
+  display: grid;
+  gap: 1.35rem;
+}
+
+.showcase-intro,
+.showcase-stage {
+  display: grid;
+  gap: 1rem;
+}
+
+.showcase-intro {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.78fr);
+  align-items: end;
+}
+
+.showcase-copy-card {
+  padding: 1.5rem;
+  border-radius: 1.45rem;
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.72)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(134, 217, 242, 0.1));
+  box-shadow: var(--shadow-soft);
+}
+
+.showcase-copy-card h3 {
+  margin-bottom: 0.75rem;
+}
+
+.showcase-copy-card p:last-of-type {
+  margin-bottom: 0;
+}
+
+.showcase-copy-card .button {
+  margin-top: 1.3rem;
+}
+
+.showcase-stage {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: stretch;
+}
+
+.showcase-feature {
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+  aspect-ratio: 1.02 / 1.08;
+  border-radius: 1.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--shadow-card);
+}
+
+.showcase-card,
+.showcase-feature {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.showcase-feature img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.showcase-feature::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 34%, rgba(8, 27, 41, 0.86));
+}
+
+.showcase-feature figcaption {
+  position: absolute;
+  left: 1.1rem;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 1;
+  color: #fff;
+}
+
+.showcase-feature figcaption span {
+  display: inline-flex;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.showcase-feature figcaption strong {
+  display: block;
+  max-width: 14rem;
+  margin-top: 0.45rem;
+  font-size: clamp(1.45rem, 2vw, 2rem);
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.showcase-grid-home {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.showcase-card-home {
+  aspect-ratio: 1 / 1;
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--shadow-soft);
+}
+
+.showcase-card-home::after,
+.showcase-card-home figcaption,
+.showcase-card-home:hover::after,
+.showcase-card-home:hover figcaption {
+  opacity: 1;
+  transform: none;
+}
+
+.showcase-card-home figcaption strong {
+  font-size: 1.28rem;
 }
 
 .duo-copy {
@@ -1918,6 +2050,11 @@ textarea {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .showcase-intro,
+  .showcase-stage {
+    grid-template-columns: 1fr;
+  }
+
   .stat-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1947,6 +2084,55 @@ textarea {
 @media (max-width: 860px) {
   :root {
     --content-width: min(100vw - 2rem, 1200px);
+  }
+
+  body::before,
+  body::after,
+  .site-header::before,
+  .site-header::after {
+    display: none;
+  }
+
+  .hero-card-primary,
+  .hero-card-secondary,
+  .hero-card-tertiary,
+  .glass-badge,
+  .glass-badge-alt,
+  .marquee-track {
+    animation: none;
+  }
+
+  .reveal,
+  .reveal-delay-1,
+  .reveal-delay-2 {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .stat-card,
+  .service-card,
+  .story-card,
+  .workflow-card,
+  .showcase-card,
+  .duo-card,
+  .testimonial-card,
+  .faq-card,
+  .contact-card,
+  .form-card,
+  .role-card,
+  .timeline-card,
+  .legal-card,
+  .cta-band,
+  .quote-panel,
+  .job-teaser-card,
+  .job-story-card,
+  .job-sidebar-card,
+  .job-spotlight-card,
+  .job-apply-shell,
+  .job-opening {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   body.nav-open .announcement-bar,
@@ -2193,6 +2379,30 @@ textarea {
   .hero-actions > *,
   .cta-band-actions > * {
     width: 100%;
+  }
+
+  .showcase-copy-card {
+    padding: 1.3rem;
+  }
+
+  .showcase-copy-card .button {
+    width: 100%;
+  }
+
+  .showcase-feature {
+    aspect-ratio: 1 / 1.08;
+    border-radius: 1.35rem;
+  }
+
+  .showcase-feature figcaption {
+    left: 0.95rem;
+    right: 0.95rem;
+    bottom: 0.95rem;
+  }
+
+  .showcase-feature figcaption strong {
+    max-width: 11rem;
+    font-size: 1.5rem;
   }
 
   .job-detail-copy {
@@ -2465,6 +2675,10 @@ textarea {
     border-radius: 1.2rem;
   }
 
+  .showcase-grid-home {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .cta-band,
   .glass-band,
   .legal-card {
@@ -2614,6 +2828,20 @@ textarea {
   .marquee-track span::before {
     width: 0.58rem;
     height: 0.58rem;
+  }
+
+  .showcase-grid-home {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-feature {
+    aspect-ratio: 1 / 1.12;
+    border-radius: 1.2rem;
+  }
+
+  .showcase-feature figcaption strong,
+  .showcase-card-home figcaption strong {
+    font-size: 1.15rem;
   }
 
   .stat-value {

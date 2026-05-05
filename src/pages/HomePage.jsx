@@ -31,6 +31,13 @@ const heroImages = [
 ];
 
 const marqueeLoop = [...marqueeItems, ...marqueeItems, ...marqueeItems];
+const homeShowcaseFeature = galleryImages[10] ?? galleryImages[0];
+const homeShowcaseTiles = [
+  galleryImages[8],
+  galleryImages[9],
+  galleryImages[11],
+  galleryImages[12]
+].filter(Boolean);
 
 export function HomePage() {
   return (
@@ -175,41 +182,82 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="section-shell section-stack" id="showcase">
-        <div className="section-heading reveal">
-          <p className="eyebrow">Showcase</p>
-          <h2>Mehr Bilder. Mehr Material. Mehr Wirkung.</h2>
-          <p>
-            Statt generischer Symbolfotos zeigt die Seite jetzt echte Eindrücke aus dem
-            Arbeitsalltag. Genau das macht den Unterschied zwischen austauschbar und glaubwürdig.
-          </p>
+      <section className="section-shell section-stack showcase-section" id="showcase">
+        <div className="showcase-intro">
+          <div className="section-heading reveal">
+            <p className="eyebrow">Showcase</p>
+            <h2>Echte Einsätze, bewusst kuratiert statt endlos gestapelt</h2>
+            <p>
+              Die Startseite zeigt nur die stärksten Eindrücke aus dem Arbeitsalltag. Das wirkt
+              klarer, glaubwürdiger und führt Besucher schneller zu Anfrage, Team und Kontakt.
+            </p>
+          </div>
+
+          <article className="showcase-copy-card reveal reveal-delay-1">
+            <p className="card-kicker">Arbeitsalltag</p>
+            <h3>Weniger Galerie-Wand. Mehr Wirkung pro Bild.</h3>
+            <p>
+              Glasfein lebt von echten Einsätzen vor Ort. Genau deshalb reicht auf der
+              Startseite eine konzentrierte Auswahl statt eines langen, schweren Bilderblocks.
+            </p>
+            <Link className="button button-secondary" to="/kontakt">
+              Angebot anfragen
+            </Link>
+          </article>
         </div>
-        <div className="showcase-grid">
-          {galleryImages.map((image, index) => (
-            <figure
-              className={`showcase-card reveal${index % 3 === 1 ? " reveal-delay-1" : index % 3 === 2 ? " reveal-delay-2" : ""}`}
-              key={image.src}
-            >
-              <img src={image.src} alt={image.alt} loading="lazy" width="1600" height="1600" />
+
+        <div className="showcase-stage">
+          {homeShowcaseFeature ? (
+            <figure className="showcase-feature reveal">
+              <img
+                src={homeShowcaseFeature.src}
+                alt={homeShowcaseFeature.alt}
+                loading="lazy"
+                decoding="async"
+                width="1500"
+                height="2000"
+              />
               <figcaption>
-                <span>Glasfein Einsatz</span>
-                <strong>{String(index + 1).padStart(2, "0")}</strong>
+                <span>Vor Ort im Einsatz</span>
+                <strong>Sauberkeit mit System statt Schnellschuss</strong>
               </figcaption>
             </figure>
-          ))}
+          ) : null}
+
+          <div className="showcase-grid showcase-grid-home">
+            {homeShowcaseTiles.map((image, index) => (
+              <figure
+                className={`showcase-card showcase-card-home reveal${index % 2 === 1 ? " reveal-delay-1" : ""}`}
+                key={image.src}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  loading="lazy"
+                  decoding="async"
+                  width="1600"
+                  height="1200"
+                />
+                <figcaption>
+                  <span>Echter Einsatz</span>
+                  <strong>{String(index + 1).padStart(2, "0")}</strong>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="section-shell duo-section" id="team">
         <div className="duo-layout">
           <div className="duo-copy reveal">
-          <p className="eyebrow">Team</p>
-          <h2>Kein aufgeblasenes Team. Zwei feste Gesichter mit Haltung.</h2>
-          <p>
-            Genau darin liegt die Stärke von Glasfein. Keine anonyme Durchlaufstruktur,
-            sondern klare Kommunikation, kurzer Draht und ein Qualitätsanspruch, der nicht
-            verwaltet, sondern gelebt wird.
-          </p>
+            <p className="eyebrow">Team</p>
+            <h2>Kein aufgeblasenes Team. Zwei feste Gesichter mit Haltung.</h2>
+            <p>
+              Genau darin liegt die Stärke von Glasfein. Keine anonyme Durchlaufstruktur,
+              sondern klare Kommunikation, kurzer Draht und ein Qualitätsanspruch, der nicht
+              verwaltet, sondern gelebt wird.
+            </p>
             <div className="feature-list">
               {featureTags.map((item) => (
                 <span key={item}>{item}</span>
@@ -230,7 +278,14 @@ export function HomePage() {
                 className={`duo-card reveal${index === 1 ? " reveal-delay-1" : ""}`}
                 key={member.name}
               >
-                <img src={member.image} alt={member.alt} loading="lazy" width="544" height="544" />
+                <img
+                  src={member.image}
+                  alt={member.alt}
+                  loading="lazy"
+                  decoding="async"
+                  width="544"
+                  height="544"
+                />
                 <div>
                   <p className="card-kicker">{member.role}</p>
                   <h3>{member.name}</h3>
@@ -257,7 +312,14 @@ export function HomePage() {
               className={`testimonial-card reveal${index === 1 ? " reveal-delay-1" : index === 2 ? " reveal-delay-2" : ""}`}
               key={item.name}
             >
-              <img src={item.image} alt={item.alt} loading="lazy" width="400" height="400" />
+              <img
+                src={item.image}
+                alt={item.alt}
+                loading="lazy"
+                decoding="async"
+                width="400"
+                height="400"
+              />
               <blockquote>{item.quote}</blockquote>
               <p>
                 {item.name}, {item.role}
