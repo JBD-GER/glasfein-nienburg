@@ -2093,15 +2093,6 @@ textarea {
     display: none;
   }
 
-  .hero-card-primary,
-  .hero-card-secondary,
-  .hero-card-tertiary,
-  .glass-badge,
-  .glass-badge-alt,
-  .marquee-track {
-    animation: none;
-  }
-
   .reveal,
   .reveal-delay-1,
   .reveal-delay-2 {
