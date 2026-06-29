@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { careerOpenings, company, footerLinks, navItems } from "../data/siteData";
+import { CookieConsent } from "./CookieConsent";
 
 function getBodyClasses(pathname) {
   if (pathname === "/" || pathname === "/index.html") {
@@ -219,6 +220,13 @@ export function SiteLayout() {
                 {item.label}
               </a>
             ))}
+            <button
+              className="footer-consent-button"
+              type="button"
+              onClick={() => window.dispatchEvent(new Event("glasfein:open-consent"))}
+            >
+              Datenschutz-Einstellungen
+            </button>
           </div>
         </div>
 
@@ -226,6 +234,8 @@ export function SiteLayout() {
           <p>&copy; {new Date().getFullYear()} {company.name}. Alle Rechte vorbehalten.</p>
         </div>
       </footer>
+
+      <CookieConsent />
     </div>
   );
 }

@@ -4,5 +4,9 @@ desktop.ini
 node_modules/
 dist/
 .vite/
+.env
+.env.local
+.env.*.local
+!.env.example
 .chrome-mobile-debug*/
 .tmp-mobile-*.png

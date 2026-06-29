@@ -58,7 +58,7 @@ export function CareerPage() {
       <section className="subpage-hero section-shell">
         <div className="subpage-copy reveal">
           <p className="eyebrow">Karriere bei Glasfein</p>
-          <h1>Du willst einen Job, bei dem Haltung wichtiger ist als Fassade?</h1>
+          <h1>Karriere bei Glasfein</h1>
           <p className="lead">
             Dann passt Glasfein zu dir. Wir suchen Menschen mit sauberer Arbeitsweise,
             Zuverlässigkeit und Lust auf ein kleines Team, das Verantwortung wirklich ernst
@@ -112,7 +112,7 @@ export function CareerPage() {
         <section className="section-shell section-stack" id="stellenangebote">
           <div className="section-heading reveal">
             <p className="eyebrow">Aktuelle Stellensuche</p>
-            <h2>Eine Stelle. Erst die wichtigsten Punkte, dann die ganze Rolle.</h2>
+            <h2>Aktuelle Stelle</h2>
             <p>
               Hier siehst du zuerst nur den kompakten Überblick. Die ausführliche Beschreibung,
               Kontaktmöglichkeiten und das Bewerbungsformular liegen bewusst auf der eigenen
@@ -155,7 +155,7 @@ export function CareerPage() {
       <section className="section-shell glass-band glass-band--career">
         <div className="glass-band-copy reveal">
           <p className="eyebrow">Teamkultur</p>
-          <h2>Kein Karrieretheater. Einfach ehrliche Arbeit mit Rückgrat.</h2>
+          <h2>Ehrliche Arbeit. Klares Team.</h2>
           <p>
             Die besten Leute wollen oft keinen aufgeblasenen Arbeitgebertext, sondern wissen,
             wie die Arbeit wirklich aussieht. Genau das zeigt Glasfein auf dieser Seite.
@@ -179,7 +179,7 @@ export function CareerPage() {
       <section className="section-shell section-split">
         <div className="reveal">
           <p className="eyebrow">Wen wir suchen</p>
-          <h2>Menschen, die lieber anpacken als beeindrucken wollen</h2>
+          <h2>Anpacken statt Show</h2>
           <p className="section-copy">
             Ein perfekter Lebenslauf ist nicht entscheidend. Wichtiger sind Verlässlichkeit,
             ein sauberer Anspruch und der Wille, beim Kunden klar und respektvoll aufzutreten.
@@ -207,7 +207,7 @@ export function CareerPage() {
       <section className="section-shell section-stack">
         <div className="section-heading reveal">
           <p className="eyebrow">Arbeitsalltag</p>
-          <h2>Kein Stockfoto-Gefühl, sondern echte Einsätze</h2>
+          <h2>Echte Einsätze</h2>
           <p>
             Auch auf der Karriereseite zeigt Glasfein echte Bilder und keine generische
             Recruiting-Optik. Das sorgt für Glaubwürdigkeit und passt zum Laden.
@@ -228,7 +228,7 @@ export function CareerPage() {
       <section className="section-shell section-stack">
         <div className="section-heading reveal">
           <p className="eyebrow">Ablauf</p>
-          <h2>Vom ersten Kontakt bis zum Start bleibt es unkompliziert</h2>
+          <h2>Unkomplizierter Start</h2>
         </div>
         <div className="timeline-grid">
           {careerTimeline.map((item, index) => (
@@ -248,7 +248,7 @@ export function CareerPage() {
         <div className="duo-layout">
           <div className="duo-copy reveal">
             <p className="eyebrow">Mit wem du arbeitest</p>
-            <h2>Ein kleines Team, das sich gegenseitig wirklich kennt</h2>
+            <h2>Kleines Team</h2>
             <p>
               Glasfein ist nicht groß, aber genau das ist ein Vorteil. Verantwortung,
               Kommunikation und Arbeitsstil liegen nicht irgendwo in der Struktur, sondern direkt

@@ -6,6 +6,7 @@ export function Seo({
   description,
   path,
   image = "/assets/images/hero-cleaning.jpg",
+  keywords,
   schema = []
 }) {
   const canonical = `${siteUrl}${path}`;
@@ -16,10 +17,15 @@ export function Seo({
       <html lang="de" />
       <title>{title}</title>
       <meta name="description" content={description} />
+      {keywords ? <meta name="keywords" content={keywords} /> : null}
+      <meta name="author" content="Glasfein GbR" />
+      <meta name="geo.region" content="DE-NI" />
+      <meta name="geo.placename" content="Steyerberg, Nienburg/Weser" />
       <link rel="canonical" href={canonical} />
       <meta name="robots" content="index, follow" />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="de_DE" />
+      <meta property="og:site_name" content="Glasfein" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonical} />

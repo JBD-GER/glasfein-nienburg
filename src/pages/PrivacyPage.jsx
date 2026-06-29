@@ -43,8 +43,9 @@ export function PrivacyPage() {
         <p>
           Wenn Sie per E-Mail, Telefon oder über eines der Formulare Kontakt aufnehmen, werden die
           von Ihnen übermittelten Angaben zur Bearbeitung Ihrer Anfrage verarbeitet. Die Formulare
-          dieser Website speichern die Eingaben nicht serverseitig, sondern öffnen Ihr lokales
-          Mailprogramm zur Vorbereitung einer E-Mail.
+          dieser Website übertragen Ihre Angaben an eine geschützte Serverfunktion, damit eine
+          Nachricht an Glasfein und eine Bestätigung an die angegebene E-Mail-Adresse versendet
+          werden können. Für den E-Mail-Versand wird der Dienst Resend genutzt.
         </p>
 
         <h2>4. Zwecke der Verarbeitung</h2>
@@ -61,7 +62,15 @@ export function PrivacyPage() {
           Plattformen sind deren Betreiber verantwortlich.
         </p>
 
-        <h2>6. Ihre Rechte</h2>
+        <h2>6. Cookies und Einwilligungen</h2>
+        <p>
+          Diese Website nutzt technisch notwendige Speicherungen, damit die Seite sicher betrieben
+          und Ihre Datenschutz-Auswahl gespeichert werden kann. Optionale Kategorien wie Statistik
+          oder externe Medien werden nur nach Ihrer Einwilligung genutzt. Ihre Auswahl können Sie
+          jederzeit über den Link „Datenschutz-Einstellungen“ im Footer ändern oder widerrufen.
+        </p>
+
+        <h2>7. Ihre Rechte</h2>
         <p>
           Sie haben im Rahmen der geltenden gesetzlichen Vorschriften das Recht auf Auskunft,
           Berichtigung, Löschung, Einschränkung der Verarbeitung sowie auf Widerspruch gegen die
@@ -69,7 +78,7 @@ export function PrivacyPage() {
           einer Datenschutzaufsichtsbehörde zu.
         </p>
 
-        <h2>7. Hinweis</h2>
+        <h2>8. Hinweis</h2>
         <p>
           Diese Datenschutzhinweise stellen eine allgemeine technische Grundlage für diese Website
           dar. Vor der endgültigen Veröffentlichung sollte der Inhalt rechtlich geprüft und an das

@@ -20,44 +20,48 @@ import {
 const heroImages = [
   {
     src: "/assets/images/showcase-12.jpeg",
-    alt: "Glasfein bei einem hochwertigen Reinigungseinsatz",
+    alt: "Glasfein Fahrzeuge für Fensterreinigung in Nienburg und Umgebung",
     className: "hero-card hero-card-primary"
   },
   {
     src: "/assets/images/showcase-05.jpeg",
-    alt: "Detailaufnahme einer Glasfein Reinigung",
+    alt: "Professionelle Glasreinigung bei Privatkunden durch Glasfein",
     className: "hero-card hero-card-secondary"
   }
 ];
 
 const marqueeLoop = [...marqueeItems, ...marqueeItems, ...marqueeItems];
-const homeShowcaseFeature = galleryImages[10] ?? galleryImages[0];
+const homeShowcaseFeature = galleryImages[8] ?? galleryImages[0];
 const homeShowcaseTiles = [
-  galleryImages[8],
-  galleryImages[9],
-  galleryImages[11],
-  galleryImages[12]
-].filter(Boolean);
+  { ...galleryImages[12], caption: "Außenfenster" },
+  { ...galleryImages[10], caption: "Wintereinsatz" },
+  { ...galleryImages[11], caption: "Fuhrpark" },
+  { ...galleryImages[9], caption: "Vor Ort" }
+].filter((image) => image.src);
 
 export function HomePage() {
   return (
     <>
       <Seo
-        title="Glasfein | Fensterreinigung in Nienburg, Steyerberg und Umgebung"
-        description="Glasfein reinigt Fenster, Wintergärten, Terrassendächer, Sprossenfenster und Photovoltaikflächen für Privatkunden im Raum Nienburg, Steyerberg, Hannover und Minden."
+        title="Fensterreinigung Nienburg & Steyerberg | Glasfein"
+        description="Glasfein bietet professionelle Fensterreinigung, Wintergartenreinigung, Terrassendachreinigung und Photovoltaikreinigung für Privatkunden in Nienburg/Weser, Steyerberg, Hannover und Minden."
         path="/"
         image="/assets/images/showcase-12.jpeg"
+        keywords="Fensterreinigung Nienburg, Fensterreinigung Steyerberg, Glasreinigung Nienburg, Wintergartenreinigung, Terrassendachreinigung, Photovoltaikreinigung"
         schema={homeSchema}
       />
 
       <section className="hero section-shell">
         <div className="hero-copy reveal">
-          <p className="eyebrow">Fensterreinigung in Nienburg, Steyerberg und Umgebung</p>
-          <h1>Wieder glasklar. Wieder Glasfein.</h1>
+          <p className="eyebrow">Glasfein seit 2017</p>
+          <h1>
+            <span>Fensterreinigung</span>
+            <span>Nienburg & Steyerberg</span>
+          </h1>
           <p className="lead">
-            Fenster, Wintergärten, Terrassendächer und anspruchsvolle Glasflächen für
-            Privatkunden. Persönlich organisiert, sichtbar sauber und mit einem Auftritt, der
-            nicht wie jede zweite Reinigungsfirma aussieht.
+            Glasfein reinigt Fenster, Rahmen, Wintergärten, Terrassendächer und
+            Photovoltaikflächen für Privatkunden im Raum Nienburg/Weser, Steyerberg, Hannover und
+            Minden. Persönlich abgestimmt, sorgfältig vorbereitet und sichtbar streifenfrei.
           </p>
           <div className="hero-actions">
             <Link className="button" to="/kontakt">
@@ -83,7 +87,7 @@ export function HomePage() {
             ))}
             <div className="glass-badge">
               <span className="glass-badge-kicker">Seit 2017</span>
-              <strong>500+ Haushalte vertrauen auf Glasfein</strong>
+              <strong>+1.000 Kunden vertrauen auf Glasfein</strong>
             </div>
             <div className="glass-badge glass-badge-alt">
               <span className="glass-badge-kicker">4G-Prinzip</span>
@@ -113,11 +117,11 @@ export function HomePage() {
       <section className="section-shell section-stack" id="leistungen">
         <div className="section-heading reveal">
           <p className="eyebrow">Leistungen</p>
-          <h2>Sauberkeit, die nicht klein denkt</h2>
+          <h2>Glasreinigung für Haus, Wintergarten und Dachflächen</h2>
           <p>
-            Glasfein liefert nicht nur streifenfreie Ergebnisse, sondern einen kompletten,
-            ruhigen Ablauf. Das merkt man an den Kanten, am Schutz im Innenbereich und an der Art,
-            wie vor Ort gearbeitet wird.
+            Von klassischen Fenstern bis zu hohen Glasflächen: Glasfein verbindet saubere
+            Handarbeit mit klarer Planung. Das merkt man an Rahmen, Kanten, Innenbereichen und am
+            ruhigen Ablauf vor Ort.
           </p>
         </div>
         <div className="service-grid service-grid--three">
@@ -137,7 +141,7 @@ export function HomePage() {
       <section className="section-shell section-stack" id="prinzip">
         <div className="section-heading reveal">
           <p className="eyebrow">4G-Prinzip</p>
-          <h2>Vier Begriffe. Ein Stil, den man sofort erkennt.</h2>
+          <h2>Vier Werte. Ein klarer Stil.</h2>
           <p>
             Das 4G-Prinzip ist kein Spruch für die Website, sondern der Rahmen, in dem jeder
             Einsatz geplant und abgeliefert wird.
@@ -160,11 +164,11 @@ export function HomePage() {
       <section className="section-shell glass-band">
         <div className="glass-band-copy reveal">
           <p className="eyebrow">Wie Glasfein arbeitet</p>
-          <h2>Persönlich rein. Sauber raus. Ohne Theater dazwischen.</h2>
+          <h2>Sauber geplant. Klar erledigt.</h2>
           <p>
-            Gute Reinigungsarbeit fühlt sich leicht an, weil im Hintergrund sauber geplant
-            wurde. Genau deshalb bleibt Glasfein bei Kunden nicht nur als Ergebnis, sondern auch
-            als Ablauf positiv hängen.
+            Gute Fensterreinigung beginnt vor dem ersten Wischer. Glasfein stimmt den Auftrag
+            persönlich ab, schützt Arbeitsbereiche und arbeitet so, dass Ergebnis und Ablauf zum
+            Zuhause passen.
           </p>
         </div>
 
@@ -186,19 +190,20 @@ export function HomePage() {
         <div className="showcase-intro">
           <div className="section-heading reveal">
             <p className="eyebrow">Showcase</p>
-            <h2>Echte Einsätze, bewusst kuratiert statt endlos gestapelt</h2>
+            <h2>Echte Einsätze. Sichtbar sauber.</h2>
             <p>
-              Die Startseite zeigt nur die stärksten Eindrücke aus dem Arbeitsalltag. Das wirkt
-              klarer, glaubwürdiger und führt Besucher schneller zu Anfrage, Team und Kontakt.
+              Die Bilder zeigen typische Arbeiten von Glasfein: Wintergartenreinigung,
+              Außenfenster, Leitern, Fuhrpark und Einsätze bei Privatkunden in der Region
+              Nienburg.
             </p>
           </div>
 
           <article className="showcase-copy-card reveal reveal-delay-1">
-            <p className="card-kicker">Arbeitsalltag</p>
-            <h3>Weniger Galerie-Wand. Mehr Wirkung pro Bild.</h3>
+            <p className="card-kicker">Vor Ort</p>
+            <h3>Saubere Ergebnisse statt leerer Versprechen.</h3>
             <p>
-              Glasfein lebt von echten Einsätzen vor Ort. Genau deshalb reicht auf der
-              Startseite eine konzentrierte Auswahl statt eines langen, schweren Bilderblocks.
+              Ob Glasdach, Fensterfront oder schwer erreichbare Außenfläche: Entscheidend ist,
+              dass nach dem Termin wieder Licht, Klarheit und ein gepflegter Eindruck bleiben.
             </p>
             <Link className="button button-secondary" to="/kontakt">
               Angebot anfragen
@@ -218,8 +223,8 @@ export function HomePage() {
                 height="2000"
               />
               <figcaption>
-                <span>Vor Ort im Einsatz</span>
-                <strong>Sauberkeit mit System statt Schnellschuss</strong>
+                <span>Wintergarten</span>
+                <strong>Klare Glasflächen bis ins Dach</strong>
               </figcaption>
             </figure>
           ) : null}
@@ -239,7 +244,7 @@ export function HomePage() {
                   height="1200"
                 />
                 <figcaption>
-                  <span>Echter Einsatz</span>
+                  <span>{image.caption}</span>
                   <strong>{String(index + 1).padStart(2, "0")}</strong>
                 </figcaption>
               </figure>
@@ -252,11 +257,10 @@ export function HomePage() {
         <div className="duo-layout">
           <div className="duo-copy reveal">
             <p className="eyebrow">Team</p>
-            <h2>Kein aufgeblasenes Team. Zwei feste Gesichter mit Haltung.</h2>
+            <h2>Zwei feste Gesichter für klare Absprachen</h2>
             <p>
-              Genau darin liegt die Stärke von Glasfein. Keine anonyme Durchlaufstruktur,
-              sondern klare Kommunikation, kurzer Draht und ein Qualitätsanspruch, der nicht
-              verwaltet, sondern gelebt wird.
+              Bei Glasfein sprechen Kunden direkt mit Menschen, die den Auftrag kennen. Das macht
+              Terminabstimmung, Rückfragen und Qualitätssicherung angenehm unkompliziert.
             </p>
             <div className="feature-list">
               {featureTags.map((item) => (
@@ -299,8 +303,8 @@ export function HomePage() {
 
       <section className="section-shell section-stack testimonial-section" id="stimmen">
         <div className="section-heading reveal">
-          <p className="eyebrow">Kundenstimmen</p>
-          <h2>Empfohlen, weil das Gesamtbild stimmt</h2>
+            <p className="eyebrow">Kundenstimmen</p>
+          <h2>Empfohlen aus gutem Grund</h2>
           <p>
             Gute Ergebnisse sprechen für sich. Noch besser ist es, wenn Kunden die Arbeitsweise
             genauso schätzen wie das Ergebnis.
@@ -332,7 +336,7 @@ export function HomePage() {
       <section className="section-shell cta-band reveal">
         <div>
           <p className="eyebrow">Direkt weiter</p>
-          <h2>Sie wollen wieder Durchblick statt Schleier auf dem Glas?</h2>
+          <h2>Klare Sicht anfragen</h2>
         </div>
         <div className="cta-band-actions">
           <Link className="button" to="/kontakt">
@@ -347,7 +351,7 @@ export function HomePage() {
       <section className="section-shell section-stack faq-section">
         <div className="section-heading reveal">
           <p className="eyebrow">Häufig gefragt</p>
-          <h2>Die wichtigsten Antworten vor dem ersten Termin</h2>
+          <h2>Antworten vor dem Termin</h2>
         </div>
         <div className="faq-list">
           {faqItems.map((item, index) => (
@@ -365,10 +369,10 @@ export function HomePage() {
       <section className="section-shell contact-section" id="kontakt">
         <div className="contact-copy reveal">
           <p className="eyebrow">Kontakt</p>
-          <h2>Einfach kurz melden. Den Rest klären wir direkt.</h2>
+          <h2>Einfach anfragen</h2>
           <p>
-            Ob klassische Fensterreinigung, Wintergarten oder schwierige Glasfläche: Glasfein
-            reagiert persönlich und ohne Umwege. Genau so sollte Kontakt heute funktionieren.
+            Ob Fensterreinigung in Nienburg/Weser, Wintergarten in Steyerberg oder anspruchsvolle
+            Glasfläche im Umland: Glasfein reagiert persönlich und ohne Umwege.
           </p>
           <div className="contact-cards">
             {contactCards.map((item) =>
@@ -389,12 +393,13 @@ export function HomePage() {
 
         <ContactForm
           subject="Anfrage über die Glasfein Website"
-          buttonLabel="Nachricht vorbereiten"
+          buttonLabel="Anfrage senden"
           messageLabel="Was können wir für Sie tun?"
           messagePlaceholder="Beschreiben Sie kurz, welche Glasflächen gereinigt werden sollen."
           note={
             <>
-              Absenden öffnet Ihr Mailprogramm. Details zum Umgang mit Daten finden Sie in der{" "}
+              Ihre Anfrage wird sicher übertragen. Sie erhalten eine Bestätigung per E-Mail.
+              Details zum Umgang mit Daten finden Sie in der{" "}
               <Link to="/datenschutz">Datenschutzerklärung</Link>.
             </>
           }

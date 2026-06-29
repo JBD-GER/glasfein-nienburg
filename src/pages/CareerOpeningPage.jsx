@@ -147,7 +147,7 @@ export function CareerOpeningPage() {
       <section className="section-shell job-response-layout" id="bewerben">
         <div className="job-apply-shell reveal">
           <p className="eyebrow">Bewerben</p>
-          <h3>Direkt über die Website vorbereiten</h3>
+          <h3>Direkt über die Website bewerben</h3>
           <p className="job-apply-intro">
             Kein langes Anschreiben nötig. Schreib kurz, wer du bist, was du suchst und wie wir
             dich erreichen.
@@ -155,13 +155,13 @@ export function CareerOpeningPage() {
           <ContactForm
             className="form-card job-form"
             subject={`Bewerbung als ${opening.title} über die Glasfein Website`}
-            buttonLabel="Bewerbung vorbereiten"
+            buttonLabel="Bewerbung senden"
             messageLabel="Kurz zu dir"
             messagePlaceholder="Erzähl uns kurz, wer du bist, was du suchst und warum du gut zu Glasfein passt."
             note={
               <>
-                Absenden öffnet dein Mailprogramm. Hinweise zur Datenverarbeitung findest du in
-                der{" "}
+                Deine Bewerbung wird sicher übertragen. Du erhältst eine Bestätigung per E-Mail.
+                Hinweise zur Datenverarbeitung findest du in der{" "}
                 <Link to="/datenschutz">Datenschutzerklärung</Link>.
               </>
             }

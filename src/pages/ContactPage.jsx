@@ -7,16 +7,17 @@ export function ContactPage() {
   return (
     <>
       <Seo
-        title="Kontakt | Glasfein Fensterreinigung in Nienburg und Umgebung"
-        description="Kontakt zu Glasfein: Anfrage für Fensterreinigung, Wintergartenreinigung, Terrassendächer und Photovoltaikflächen im Raum Nienburg und Steyerberg."
+        title="Kontakt zu Glasfein | Fensterreinigung Nienburg"
+        description="Kontaktieren Sie Glasfein für Fensterreinigung, Wintergartenreinigung, Terrassendächer und Photovoltaikflächen im Raum Nienburg/Weser, Steyerberg, Hannover und Minden."
         path="/kontakt"
         image="/assets/images/showcase-13.jpeg"
+        keywords="Kontakt Glasfein, Angebot Fensterreinigung Nienburg, Fensterputzer Steyerberg, Glasreinigung Anfrage"
       />
 
       <section className="subpage-hero section-shell">
         <div className="subpage-copy reveal">
           <p className="eyebrow">Kontakt</p>
-          <h1>Sie wollen ein Angebot, eine Rückmeldung oder einfach klare Antworten?</h1>
+          <h1>Anfrage stellen</h1>
           <p className="lead">
             Dann schreiben oder rufen Sie direkt an. Glasfein reagiert persönlich, schnell und
             ohne Umwege über irgendeine unpersönliche Struktur.
@@ -60,7 +61,7 @@ export function ContactPage() {
       <section className="section-shell contact-section">
         <div className="contact-copy reveal">
           <p className="eyebrow">Direkt erreichbar</p>
-          <h2>Kurze Wege. Saubere Kommunikation. Kein Leerlauf.</h2>
+          <h2>Direkter Kontakt</h2>
           <p>
             Egal ob klassische Fensterreinigung oder kniffliger Sonderfall: Wir besprechen jede
             Anfrage direkt und finden eine passende Lösung für Ihre Glasflächen.
@@ -84,12 +85,13 @@ export function ContactPage() {
 
         <ContactForm
           subject="Kontaktanfrage über die Glasfein Website"
-          buttonLabel="Anfrage vorbereiten"
+          buttonLabel="Anfrage senden"
           messageLabel="Ihre Nachricht"
           messagePlaceholder="Beschreiben Sie kurz, welche Glasflächen gereinigt werden sollen."
           note={
             <>
-              Absenden öffnet Ihr Mailprogramm. Details finden Sie in der{" "}
+              Ihre Anfrage wird sicher übertragen. Sie erhalten eine Bestätigung per E-Mail.
+              Details finden Sie in der{" "}
               <Link to="/datenschutz">Datenschutzerklärung</Link>.
             </>
           }
@@ -99,7 +101,7 @@ export function ContactPage() {
       <section className="section-shell section-stack">
         <div className="section-heading reveal">
           <p className="eyebrow">Einsatzgebiet</p>
-          <h2>Unterwegs zwischen Hannover, Minden und Nienburg</h2>
+          <h2>Regionen im Überblick</h2>
           <p>
             Die Seite transportiert jetzt nicht nur Leistungen, sondern auch Haltung: persönlich,
             regional und sichtbar hochwertig statt beliebig.

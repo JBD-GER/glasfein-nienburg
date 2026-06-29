@@ -36,7 +36,7 @@ export const footerLinks = [
 
 export const homeStats = [
   { value: "2", label: "feste Ansprechpartner mit klarem Anspruch" },
-  { value: "500+", label: "Private Haushalte vertrauen auf Glasfein" },
+  { value: "+1.000", label: "zufriedene Kunden vertrauen auf Glasfein" },
   { value: "2017", label: "seitdem mit Leidenschaft im Einsatz" },
   { value: "3 Regionen", label: "unterwegs zwischen Hannover, Minden und Nienburg" }
 ];
@@ -131,19 +131,19 @@ export const featureTags = [
 ];
 
 export const galleryImages = [
-  { src: "/assets/images/showcase-01.jpeg", alt: "Eindruck aus dem Glasfein Arbeitsalltag 01" },
-  { src: "/assets/images/showcase-02.jpeg", alt: "Eindruck aus dem Glasfein Arbeitsalltag 02" },
-  { src: "/assets/images/showcase-03.jpeg", alt: "Eindruck aus dem Glasfein Arbeitsalltag 03" },
-  { src: "/assets/images/showcase-04.jpeg", alt: "Eindruck aus dem Glasfein Arbeitsalltag 04" },
-  { src: "/assets/images/showcase-05.jpeg", alt: "Eindruck aus dem Glasfein Arbeitsalltag 05" },
-  { src: "/assets/images/showcase-06.jpeg", alt: "Eindruck aus dem Glasfein Arbeitsalltag 06" },
-  { src: "/assets/images/showcase-07.jpeg", alt: "Eindruck aus dem Glasfein Arbeitsalltag 07" },
-  { src: "/assets/images/showcase-08.jpeg", alt: "Eindruck aus dem Glasfein Arbeitsalltag 08" },
-  { src: "/assets/images/showcase-09.jpeg", alt: "Eindruck aus dem Glasfein Arbeitsalltag 09" },
-  { src: "/assets/images/showcase-10.jpeg", alt: "Eindruck aus dem Glasfein Arbeitsalltag 10" },
-  { src: "/assets/images/showcase-11.jpeg", alt: "Eindruck aus dem Glasfein Arbeitsalltag 11" },
-  { src: "/assets/images/showcase-12.jpeg", alt: "Eindruck aus dem Glasfein Arbeitsalltag 12" },
-  { src: "/assets/images/showcase-13.jpeg", alt: "Eindruck aus dem Glasfein Arbeitsalltag 13" }
+  { src: "/assets/images/showcase-01.jpeg", alt: "Glasfein Einsatz bei der Fensterreinigung in der Region Nienburg" },
+  { src: "/assets/images/showcase-02.jpeg", alt: "Saubere Glasflächen nach einer Fensterreinigung durch Glasfein" },
+  { src: "/assets/images/showcase-03.jpeg", alt: "Glasfein Arbeitsalltag mit professioneller Glasreinigung" },
+  { src: "/assets/images/showcase-04.jpeg", alt: "Detailaufnahme eines Glasfein Reinigungseinsatzes" },
+  { src: "/assets/images/showcase-05.jpeg", alt: "Fensterreinigung und Glaspflege im Privatkundenbereich" },
+  { src: "/assets/images/showcase-06.jpeg", alt: "Glasfein bei der Reinigung schwer erreichbarer Glasflächen" },
+  { src: "/assets/images/showcase-07.jpeg", alt: "Professionelle Glasreinigung für Haus und Gartenbereich" },
+  { src: "/assets/images/showcase-08.jpeg", alt: "Fensterreinigung an hohen Glasflächen mit Glasfein" },
+  { src: "/assets/images/showcase-09.jpeg", alt: "Wintergartenreinigung mit klaren Glasflächen von Glasfein" },
+  { src: "/assets/images/showcase-10.jpeg", alt: "Glasfein Fahrzeug für Fensterreinigung in Nienburg und Umgebung" },
+  { src: "/assets/images/showcase-11.jpeg", alt: "Glasfein Reinigungsequipment vor einem Wintereinsatz" },
+  { src: "/assets/images/showcase-12.jpeg", alt: "Glasfein Fahrzeuge für Glasreinigung und Fensterreinigung" },
+  { src: "/assets/images/showcase-13.jpeg", alt: "Fensterreinigung am Einfamilienhaus mit Leiter und Glasfein Team" }
 ];
 
 export const teamMembers = [
@@ -355,18 +355,35 @@ export const contactPageCards = [
 export const homeSchema = [
   {
     "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    name: "Glasfein Nienburg",
+    url: `${siteUrl}/`,
+    inLanguage: "de-DE",
+    publisher: {
+      "@id": `${siteUrl}/#business`
+    }
+  },
+  {
+    "@context": "https://schema.org",
     "@type": ["LocalBusiness", "ProfessionalService"],
+    "@id": `${siteUrl}/#business`,
     name: company.name,
+    alternateName: "Glasfein Nienburg",
     url: `${siteUrl}/`,
     logo: `${siteUrl}/assets/images/logo.png`,
     image: `${siteUrl}/assets/images/showcase-12.jpeg`,
     description:
-      "Glasfein ist Ihr Ansprechpartner für Fensterreinigung, Wintergartenreinigung, Terrassendachreinigung und Photovoltaikreinigung im Raum Nienburg, Steyerberg, Hannover und Minden.",
+      "Glasfein ist Ihr Ansprechpartner für Fensterreinigung, Wintergartenreinigung, Terrassendachreinigung und Photovoltaikreinigung im Raum Nienburg/Weser, Steyerberg, Hannover und Minden.",
     telephone: "+49 163 6304419",
     email: company.email,
     slogan: company.slogan,
     foundingDate: company.foundingDate,
-    areaServed: company.areaServed,
+    priceRange: "$$",
+    areaServed: company.areaServed.map((name) => ({
+      "@type": "AdministrativeArea",
+      name
+    })),
     address: {
       "@type": "PostalAddress",
       streetAddress: company.addressLines[0],
@@ -375,6 +392,18 @@ export const homeSchema = [
       addressCountry: "DE"
     },
     sameAs: company.socialLinks.map((item) => item.href),
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Leistungen von Glasfein",
+      itemListElement: services.map((service) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: service.title,
+          description: service.description
+        }
+      }))
+    },
     knowsAbout: [
       "Fensterreinigung",
       "Wintergartenreinigung",
@@ -383,6 +412,21 @@ export const homeSchema = [
       "Photovoltaikreinigung",
       "Glasreinigung"
     ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${siteUrl}/#fensterreinigung-nienburg`,
+    name: "Fensterreinigung in Nienburg, Steyerberg und Umgebung",
+    serviceType: "Fensterreinigung, Glasreinigung, Wintergartenreinigung, Terrassendachreinigung und Photovoltaikreinigung",
+    url: `${siteUrl}/#leistungen`,
+    provider: {
+      "@id": `${siteUrl}/#business`
+    },
+    areaServed: company.areaServed.map((name) => ({
+      "@type": "AdministrativeArea",
+      name
+    }))
   },
   {
     "@context": "https://schema.org",
