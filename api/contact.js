@@ -1,6 +1,13 @@
+import { readFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
+const LOGO_CONTENT_ID = "glasfein-logo";
+const LOGO_PATH = resolve(dirname(fileURLToPath(import.meta.url)), "../public/assets/images/logo.png");
 
 const REQUIRED_FIELDS = ["firstName", "lastName", "phone", "email", "message"];
+let cachedLogoAttachments;
 
 function clean(value, maxLength = 1800) {
   return String(value ?? "")
@@ -29,6 +36,28 @@ function nl2br(value) {
 
 function isEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function getEmailAttachments() {
+  if (cachedLogoAttachments) {
+    return cachedLogoAttachments;
+  }
+
+  try {
+    cachedLogoAttachments = [
+      {
+        filename: "glasfein-logo.png",
+        content: readFileSync(LOGO_PATH).toString("base64"),
+        contentId: LOGO_CONTENT_ID,
+        content_type: "image/png"
+      }
+    ];
+  } catch (error) {
+    console.warn("Glasfein email logo could not be attached.", error);
+    cachedLogoAttachments = [];
+  }
+
+  return cachedLogoAttachments;
 }
 
 async function readRequestBody(req) {
@@ -92,7 +121,7 @@ function emailShell({ eyebrow, title, preview, body, footer }) {
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
                   <tr>
                     <td style="vertical-align:middle;">
-                      <img src="https://glasfein-nienburg.de/assets/images/logo.png" width="54" height="54" alt="Glasfein" style="display:block;border-radius:14px;background:#ffffff;">
+                      <img src="cid:${LOGO_CONTENT_ID}" width="54" height="54" alt="Glasfein" style="display:block;width:54px;height:54px;border-radius:14px;background:#ffffff;">
                     </td>
                     <td align="right" style="vertical-align:middle;color:#d7ff5f;font-size:12px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;">
                       ${escapeHtml(eyebrow)}
@@ -125,6 +154,28 @@ function infoRow(label, value) {
     <td style="padding:13px 0;border-bottom:1px solid rgba(9,32,49,0.08);color:#567184;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;width:34%;">${escapeHtml(label)}</td>
     <td style="padding:13px 0;border-bottom:1px solid rgba(9,32,49,0.08);color:#081b29;font-size:15px;line-height:1.55;font-weight:700;">${nl2br(value)}</td>
   </tr>`;
+}
+
+function summaryCard(label, value, href) {
+  const content = href
+    ? `<a href="${escapeHtml(href)}" style="color:#081b29;text-decoration:none;font-weight:800;">${escapeHtml(value)}</a>`
+    : escapeHtml(value);
+
+  return `<td width="33.333%" style="padding:0 8px 16px 0;vertical-align:top;">
+    <div style="min-height:86px;padding:16px;border-radius:18px;background:linear-gradient(145deg,#ffffff,#edf9fd);border:1px solid rgba(9,32,49,0.08);box-shadow:0 10px 28px rgba(8,27,41,0.06);">
+      <p style="margin:0 0 8px;color:#0a7eb4;font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;">${escapeHtml(label)}</p>
+      <p style="margin:0;color:#081b29;font-size:16px;line-height:1.4;font-weight:800;">${content}</p>
+    </div>
+  </td>`;
+}
+
+function actionButton(label, href, variant = "primary") {
+  const isPrimary = variant === "primary";
+  const background = isPrimary ? "linear-gradient(135deg,#063b59,#0a7eb4)" : "#ffffff";
+  const color = isPrimary ? "#ffffff" : "#081b29";
+  const border = isPrimary ? "1px solid #0a7eb4" : "1px solid rgba(9,32,49,0.1)";
+
+  return `<a href="${escapeHtml(href)}" style="display:inline-block;margin:0 10px 10px 0;padding:13px 18px;border-radius:999px;background:${background};border:${border};color:${color};font-size:15px;line-height:1.2;font-weight:800;text-decoration:none;box-shadow:0 12px 28px rgba(8,27,41,0.12);">${escapeHtml(label)}</a>`;
 }
 
 function buildCustomerEmail({ firstName, subject, phone, email, message, isApplication }) {
@@ -170,23 +221,41 @@ function buildCustomerEmail({ firstName, subject, phone, email, message, isAppli
 
 function buildOwnerEmail({ firstName, lastName, phone, email, message, subject, pageTitle, pageUrl, isApplication }) {
   const customerName = `${firstName} ${lastName}`.trim();
+  const requestType = isApplication ? "Bewerbung" : "Anfrage";
+  const phoneHref = `tel:${phone.replace(/[^\d+]/g, "")}`;
+  const emailHref = `mailto:${email}?subject=${encodeURIComponent(`Antwort von Glasfein: ${subject}`)}`;
   const body = `
-    <p style="margin:0 0 22px;color:#567184;font-size:16px;line-height:1.75;">Es ist eine neue ${isApplication ? "Bewerbung" : "Website-Anfrage"} über glasfein-nienburg.de eingegangen.</p>
-    <div style="padding:20px;border-radius:20px;background:#f7fbfc;border:1px solid rgba(9,32,49,0.08);">
-      <p style="margin:0 0 12px;color:#0a7eb4;font-size:12px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;">Kontakt</p>
+    <p style="margin:0 0 8px;color:#0a7eb4;font-size:12px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;">Neue ${escapeHtml(requestType)} über die Website</p>
+    <p style="margin:0 0 22px;color:#081b29;font-size:22px;line-height:1.28;font-weight:800;">${escapeHtml(customerName)} hat Glasfein kontaktiert.</p>
+
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 10px;">
+      <tr>
+        ${summaryCard("Name", customerName)}
+        ${summaryCard("Telefon", phone, phoneHref)}
+        ${summaryCard("E-Mail", email, emailHref)}
+      </tr>
+    </table>
+
+    <div style="margin-top:8px;padding:20px;border-radius:22px;background:#f7fbfc;border:1px solid rgba(9,32,49,0.08);">
+      <p style="margin:0 0 12px;color:#0a7eb4;font-size:12px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;">Details</p>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-        ${infoRow("Name", customerName)}
-        ${infoRow("Telefon", phone)}
-        ${infoRow("E-Mail", email)}
+        ${infoRow("Typ", requestType)}
         ${infoRow("Betreff", subject)}
+        ${infoRow("Seite", pageTitle || "Nicht angegeben")}
       </table>
     </div>
-    <div style="margin-top:18px;padding:20px;border-radius:20px;background:#081b29;color:#edf5f7;">
+
+    <div style="margin-top:18px;padding:22px;border-radius:22px;background:linear-gradient(145deg,#081b29,#0b334b);color:#edf5f7;box-shadow:0 20px 44px rgba(8,27,41,0.22);">
       <p style="margin:0 0 12px;color:#d7ff5f;font-size:12px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;">Nachricht</p>
       <p style="margin:0;color:#edf5f7;font-size:16px;line-height:1.75;">${nl2br(message)}</p>
     </div>
+
+    <div style="margin-top:20px;">
+      ${actionButton(isApplication ? "Bewerber anrufen" : "Kunden anrufen", phoneHref)}
+      ${actionButton("Direkt antworten", emailHref, "secondary")}
+    </div>
+
     <p style="margin:22px 0 0;color:#567184;font-size:14px;line-height:1.7;">
-      Seite: ${escapeHtml(pageTitle)}<br>
       URL: <a href="${escapeHtml(pageUrl)}" style="color:#0a7eb4;text-decoration:none;font-weight:800;">${escapeHtml(pageUrl)}</a>
     </p>
   `;
@@ -197,7 +266,7 @@ function buildOwnerEmail({ firstName, lastName, phone, email, message, subject, 
     preview: `${customerName} hat Glasfein kontaktiert.`,
     body,
     footer:
-      "Antworten auf diese E-Mail gehen direkt an die angegebene Kundenadresse, sofern der Mailclient Reply-To berücksichtigt."
+      "Tipp: Die Antwortfunktion nutzt die angegebene Kundenadresse als Reply-To. Alternativ einfach über die Buttons in dieser E-Mail reagieren."
   });
 }
 
@@ -281,7 +350,8 @@ export default async function handler(req, res) {
         reply_to: data.email,
         subject: ownerSubject,
         html: buildOwnerEmail({ ...data, isApplication }),
-        text: buildTextEmail({ ...data, isApplication })
+        text: buildTextEmail({ ...data, isApplication }),
+        attachments: getEmailAttachments()
       }),
       sendEmail(apiKey, {
         from,
@@ -291,7 +361,8 @@ export default async function handler(req, res) {
         html: buildCustomerEmail({ ...data, isApplication }),
         text: isApplication
           ? `Hallo ${data.firstName},\n\nvielen Dank für deine Bewerbung bei Glasfein. Wir haben deine Nachricht erhalten und melden uns persönlich bei dir.\n\nGlasfein GbR`
-          : `Hallo ${data.firstName},\n\nvielen Dank für Ihre Anfrage bei Glasfein. Wir haben Ihre Nachricht erhalten und melden uns persönlich bei Ihnen.\n\nGlasfein GbR`
+          : `Hallo ${data.firstName},\n\nvielen Dank für Ihre Anfrage bei Glasfein. Wir haben Ihre Nachricht erhalten und melden uns persönlich bei Ihnen.\n\nGlasfein GbR`,
+        attachments: getEmailAttachments()
       })
     ]);
 
