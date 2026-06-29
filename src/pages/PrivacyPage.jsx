@@ -22,9 +22,9 @@ export function PrivacyPage() {
         <p>
           Glasfein GbR
           <br />
-          Von-Münchhausen-Str. 25
+          Großer Kamp 7a
           <br />
-          31595 Steyerberg
+          31633 Leese
           <br />
           E-Mail: <a href="mailto:glasfein@gmail.com">glasfein@gmail.com</a>
           <br />

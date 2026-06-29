@@ -19,7 +19,7 @@ export function ImprintPage() {
 
       <section className="section-shell legal-card reveal">
         <h2>Angaben gemäß § 5 TMG</h2>
-        <p>Glasfein GbR<br />Von-Münchhausen-Str. 25<br />31595 Steyerberg</p>
+        <p>Glasfein GbR<br />Großer Kamp 7a<br />31633 Leese</p>
 
         <h2>Vertreten durch</h2>
         <p>Gunther Gamradt und Steffi Gamradt</p>

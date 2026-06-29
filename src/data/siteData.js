@@ -9,7 +9,7 @@ export const company = {
   phoneSecondary: "0163 6304459",
   phoneSecondaryHref: "tel:+491636304459",
   email: "glasfein@gmail.com",
-  addressLines: ["Von-Münchhausen-Str. 25", "31595 Steyerberg"],
+  addressLines: ["Großer Kamp 7a", "31633 Leese"],
   areaServed: ["Nienburg/Weser", "Steyerberg", "Hannover", "Minden"],
   foundingDate: "2017-06-03",
   socialLinks: [
@@ -387,8 +387,8 @@ export const homeSchema = [
     address: {
       "@type": "PostalAddress",
       streetAddress: company.addressLines[0],
-      postalCode: "31595",
-      addressLocality: "Steyerberg",
+      postalCode: "31633",
+      addressLocality: "Leese",
       addressCountry: "DE"
     },
     sameAs: company.socialLinks.map((item) => item.href),

@@ -20,7 +20,7 @@ export function Seo({
       {keywords ? <meta name="keywords" content={keywords} /> : null}
       <meta name="author" content="Glasfein GbR" />
       <meta name="geo.region" content="DE-NI" />
-      <meta name="geo.placename" content="Steyerberg, Nienburg/Weser" />
+      <meta name="geo.placename" content="Leese, Nienburg/Weser" />
       <link rel="canonical" href={canonical} />
       <meta name="robots" content="index, follow" />
       <meta property="og:type" content="website" />

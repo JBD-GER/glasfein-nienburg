@@ -215,7 +215,7 @@ function buildCustomerEmail({ firstName, subject, phone, email, message, isAppli
     preview: "Danke, Ihre Nachricht an Glasfein wurde empfangen.",
     body,
     footer:
-      "Glasfein GbR, Von-Münchhausen-Str. 25, 31595 Steyerberg<br>Diese automatische Bestätigung wurde von no-reply@glasfein-nienburg.de gesendet."
+      "Glasfein GbR, Großer Kamp 7a, 31633 Leese<br>Diese automatische Bestätigung wurde von no-reply@glasfein-nienburg.de gesendet."
   });
 }
 
