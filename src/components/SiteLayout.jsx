@@ -232,6 +232,12 @@ export function SiteLayout() {
 
         <div className="footer-bottom">
           <p>&copy; {new Date().getFullYear()} {company.name}. Alle Rechte vorbehalten.</p>
+          <p className="footer-credit">
+            Konzeption &amp; Umsetzung durch{" "}
+            <a href="https://www.justbedigital.de" target="_blank" rel="noopener noreferrer">
+              JustBeDigital
+            </a>
+          </p>
         </div>
       </footer>
 

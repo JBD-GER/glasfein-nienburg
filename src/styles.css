@@ -2253,6 +2253,13 @@ textarea {
   padding-top: 1rem;
 }
 
+.footer-credit a {
+  display: inline;
+  color: var(--brand);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(24px);
